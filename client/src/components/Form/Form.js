@@ -64,7 +64,7 @@ const Form =() =>{
                 onChange={(e)=> setPostData({ ...postData, tags: e.target.value})}
                 />
                 <div className={classes.fileInput}><FileBase type="file" multiple={false} onDone={({ base64 }) => setPostData({ ...postData, selectedFile: base64 })} /></div>
-                <Button className={classes.buttonSubmit} variant='contained' type='submit' color='primary' size='large'fullWidth>Submit</Button>
+                <Button className={classes.buttonSubmit} variant='contained' type='submit' color='primary' size='large' fullWidth>Submit</Button>
                 <Button className={classes.buttonSubmit} variant='contained' onClick={clear} color='secondary' size='small' fullWidth>Clear</Button>
             </form>
         </Paper>
