@@ -1,4 +1,5 @@
-# Getting Started with Create React App
+
+# Application Deployed: https://gifted-jackson-197e45.netlify.app/
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -70,4 +71,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 
-#Application Deployed: https://gifted-jackson-197e45.netlify.app/
+
