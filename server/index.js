@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import postRoutes from './routes/posts.js';
+import userRoutes from './routes/users.js';
 
 const app = express();
 dotenv.config();
@@ -17,7 +18,7 @@ app.use('/posts',postRoutes)
 app.use('/',(req,res)=>{
     res.send('HEllo to memories API')
 });
-
+app.use('/user', userRoutes);
 const PORT= process.env.PORT || 5000;
 
 mongoose.connect(process.env.Connection_URL, { useNewUrlParser: true, useUnifiedTopology: true})

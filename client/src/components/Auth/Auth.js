@@ -5,20 +5,45 @@ import { Avatar, Button, Paper, Grid, Typography, Container, TextField } from '@
 import { useHistory } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import {signin, signup} from '../../actions/auth';
 import useStyles from './styles';
 import Input from './Input';
+
+const initialState= {
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+}
 const Auth =()=> {
+
     const classes = useStyles();
     const history=useHistory();
     const [isSignup, setIsSignup] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const handleShowPassword = () => setShowPassword(!showPassword);
     const dispatch = useDispatch();
-    const handleSubmit =() =>{
-         
-    }
-    const handleChange =() =>{
+    const [formData, setFormData] = useState(initialState);
 
+    const handleSubmit =(e) =>{
+        e.preventDefault();
+
+        console.log(formData);
+        if(isSignup)
+        {
+            dispatch(signup(formData, history))
+        }
+        else{
+            dispatch(signin(formData,history));
+        }
+    };
+
+    const handleChange =(e) =>{
+        setFormData({
+            ...formData, [e.target.name] : e.target.value
+        })
+        
     }
     const googleSuccess= async (res)=>{
         const result = res?.profileObj;
