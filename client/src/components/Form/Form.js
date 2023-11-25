@@ -7,7 +7,7 @@ import {createPost, updatePost} from '../../actions/posts';
   
 const Form =({currentId, setCurrentId}) =>{
     const classes = useStyles();
-    const post=useSelector((state)=> currentId? state.posts.find((p)=> p._id === currentId): null)
+    const post = useSelector((state)=> currentId? state.posts.find((p)=> p._id === currentId): null)
     const [postData, setPostData] = useState({
         
         title: '',
@@ -25,7 +25,7 @@ const Form =({currentId, setCurrentId}) =>{
     const handleSubmit = (e) =>{
         e.preventDefault();
 
-        if(currentId === 0 )
+        if(currentId === null)
         {
             dispatch(createPost({...postData, name: user?.result?.name }));
 
@@ -83,7 +83,7 @@ const Form =({currentId, setCurrentId}) =>{
                 onChange={(e)=> setPostData({ ...postData, message: e.target.value})}
                 />
                 <TextField name="tags" variant="outlined" label="Tags (coma separated)" fullWidth value={postData.tags} onChange={(e) => setPostData({ ...postData, tags: e.target.value.split(',') })} />
-                <div className={classes.fileInput}><FileBase type="file" multiple={false} onDone={({ base64 }) => setPostData({ ...postData, selectedFile: base64 })} /></div>
+               
                 <Button className={classes.buttonSubmit} variant='contained' type='submit' color='primary' size='large' fullWidth>Submit</Button>
                 <Button className={classes.buttonSubmit} variant='contained' onClick={clear} color='secondary' size='small' fullWidth>Clear</Button>
             </form>

@@ -8,11 +8,19 @@ import useStyles  from './styles';
 import moment from 'moment';
 import {useDispatch} from 'react-redux';
 import {deletePost ,likePost} from '../../../actions/posts';
+import img1 from "../../../assets/memories2.png";
+import img2 from "../../../assets/bg-img.jpg";
+import img3 from "../../../assets/img3.jpg";
+import img4 from "../../../assets/img4.jpg";
+import img5 from "../../../assets/img5.jpg";
 
 const Post =({post ,setCurrentId}) =>{
     const classes = useStyles();
     const dispatch = useDispatch();
     const user = JSON.parse(localStorage.getItem('profile'));
+    const images_array = [img1, img2, img3, img4, img5];
+    const randomIndex = Math.floor(Math.random() * images_array.length);
+    let img =  images_array[randomIndex];
     
     const Likes = () => {
         if (post.likes.length > 0) {
@@ -28,7 +36,7 @@ const Post =({post ,setCurrentId}) =>{
       };
     return (
         <Card className={classes.card} >
-            <CardMedia className={classes.media} image={post.selectedFile} title={post.title}></CardMedia>
+            <CardMedia className={classes.media} image={img} title={post.title}></CardMedia>
             <div className={classes.overlay}>
                 <Typography variant='h6'>{post.name}</Typography>
                 <Typography variant='body2'>{moment(post.createdAt).fromNow()}</Typography>
@@ -37,7 +45,7 @@ const Post =({post ,setCurrentId}) =>{
             {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) && (
             <div className={classes.overlay2}>
                 <Button onClick={() => setCurrentId(post._id)} style={{ color: 'white' }} size="small">
-                <MoreHorizIcon fontSize="default" />
+                <MoreHorizIcon fontSize="medium" />
                 </Button>
             </div>
             )}

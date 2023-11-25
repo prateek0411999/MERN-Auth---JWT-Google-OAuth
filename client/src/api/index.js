@@ -1,8 +1,10 @@
 import axios from 'axios';
 //const url='https://memoriesproject01.herokuapp.com/posts';
+//const local = 'http://localhost:5000';
+const cyclic_url= 'https://curious-pike-underwear.cyclic.app';
 
 const API = axios.create({
-    baseURL: 'http://localhost:5000'
+    baseURL: cyclic_url
 })
 
 API.interceptors.request.use((req)=>{
